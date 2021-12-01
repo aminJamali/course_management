@@ -1,18 +1,18 @@
+import 'package:course_management/pages/add_student_page.dart/models/add_student_dto.dart';
 import 'package:dartz/dartz.dart';
-import 'package:course_management/pages/add_course_page/models/add_course_dto.dart';
 import 'package:taav_http_client/taav_http_client.dart';
 import 'package:course_management/course_management.dart';
 
-class AddCourseRepository {
+class AddStudentRepository {
   late TaavHttpClient taavHttpClient;
   late final void Function(String exception) onExceptionReport;
-  AddCourseRepository({required final this.onExceptionReport}) {
+  AddStudentRepository({required final this.onExceptionReport}) {
     taavHttpClient =
         TaavHttpClient(handleExceptionCallBack: onExceptionReport, baseUrl: '');
   }
-  Future<Either<String, dynamic>> addCourse(final AddCourseDto dto) async {
+  Future<Either<String, dynamic>> addStudent(AddStudentDto dto) async {
     final resultOrException =
-        await taavHttpClient.post(RepositoryUrls.addCourseUrl, data: dto);
+        await taavHttpClient.post(RepositoryUrls.addStudentUrl, data: dto);
     return resultOrException.fold(
         (exception) => Left(exception), (result) => Right(result));
   }
