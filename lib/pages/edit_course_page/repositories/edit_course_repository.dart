@@ -1,6 +1,5 @@
 import 'package:course_management/pages/add_course_page/models/add_course_dto.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:course_management/pages/edit_course_page/models/course_view_model.dart';
 import 'package:taav_http_client/taav_http_client.dart';
 
@@ -16,7 +15,7 @@ class EditCourseRepository {
 
   Future<Either<String, dynamic>> editCourse(AddCourseDto dto) async {
     final resultOrException = await taavHttpClient
-        .put('${RepositoryUrls.editCourseUrl(dto.id)}', data: dto);
+        .put(RepositoryUrls.editCourseUrl(dto.id), data: dto);
     return resultOrException.fold(
       (exception) => Left(exception),
       (result) => Right(
@@ -27,7 +26,7 @@ class EditCourseRepository {
 
   Future<Either<String, CourseViewModel>> getCourseById(int id) async {
     final resultOrException =
-        await taavHttpClient.get('${RepositoryUrls.getCourseByIdUrl(id)}');
+        await taavHttpClient.get(RepositoryUrls.getCourseByIdUrl(id));
     return resultOrException.fold(
       (exception) => Left(exception),
       (result) => Right(

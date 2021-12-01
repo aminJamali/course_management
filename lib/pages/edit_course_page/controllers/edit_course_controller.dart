@@ -12,6 +12,7 @@ class EditCourseController extends GetxController {
   late TaavHttpClient taavHttpClient;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RxBool isWaiting = false.obs;
+  RxBool refreshMode = false.obs;
   late int courseId;
   TextEditingController courseTitleController = TextEditingController();
   TextEditingController courseUnitController = TextEditingController();
@@ -40,9 +41,12 @@ class EditCourseController extends GetxController {
     final Either<String, dynamic> result =
         await editCourseRepository.getCourseById(courseId);
     isWaiting(false);
-    result.fold((exception) {}, (result) {
+    result.fold((exception) {
+      refreshMode(true);
+    }, (result) {
+      refreshMode(false);
       receivedCourseById = result;
-      _fillEditTexts();
+      _initForEdit();
     });
   }
 
@@ -56,7 +60,7 @@ class EditCourseController extends GetxController {
             ));
   }
 
-  void _fillEditTexts() {
+  void _initForEdit() {
     courseTitleController.text = receivedCourseById.title;
     courseUnitController.text = receivedCourseById.unit.toString();
   }
@@ -69,7 +73,6 @@ class EditCourseController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     courseId = 2;
     getCourseById();

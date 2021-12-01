@@ -1,9 +1,10 @@
+import 'package:course_management/pages/add_course_page/models/add_course_dto.dart';
 import 'package:course_management/pages/edit_course_page/models/course_view_model.dart';
 
 class AddStudentDto {
   late int id;
   late String name, family, mobile;
-  late List<CourseViewModel> courses;
+  late List<AddCourseDto> courses;
   AddStudentDto(
       {required this.id,
       required this.name,

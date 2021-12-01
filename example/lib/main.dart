@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       locale: const Locale('fa', 'IR'),
       translations: LocalizationService(),
       title: 'Modify test',
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

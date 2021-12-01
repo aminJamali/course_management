@@ -1,3 +1,4 @@
+import 'package:course_management/pages/add_course_page/models/add_course_dto.dart';
 import 'package:course_management/pages/add_student_page.dart/models/add_student_dto.dart';
 import 'package:course_management/pages/add_student_page.dart/repositories/add_student_repositories.dart';
 import 'package:course_management/pages/edit_course_page/models/course_view_model.dart';
@@ -16,6 +17,7 @@ class AddStudentController extends GetxController {
 
   TextEditingController mobileController = TextEditingController();
   List<CourseViewModel> studentCourses = [];
+  List<AddCourseDto> courseDtos = [];
   String successMessage = 'با موفقیت اضافه شد';
   AddStudentRepository addStudentRepository =
       AddStudentRepository(onExceptionReport: (final exceptionKey) {
@@ -27,6 +29,15 @@ class AddStudentController extends GetxController {
       return false;
     }
     isWaiting(true);
+    studentCourses.forEach((element) {
+      courseDtos.add(
+        AddCourseDto(
+          id: element.id,
+          title: element.title,
+          unit: element.unit,
+        ),
+      );
+    });
     final Either<String, dynamic> result =
         await addStudentRepository.addStudent(_addStudentDto);
     isWaiting(false);
@@ -52,7 +63,7 @@ class AddStudentController extends GetxController {
         id: DateTime.now().millisecondsSinceEpoch,
         name: nameController.text,
         family: familyController.text,
-        courses: studentCourses,
+        courses: courseDtos,
         mobile: mobileController.text,
       );
 }

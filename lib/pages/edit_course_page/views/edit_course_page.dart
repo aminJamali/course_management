@@ -10,14 +10,14 @@ class EditCoursePage extends GetView<EditCourseController> {
   @override
   Widget build(BuildContext context) {
     return TaavScaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+      appBar: _appBar(),
+      body: _body(),
       showBorder: false,
       padding: EdgeInsets.zero,
     );
   }
 
-  _buildAppBar() {
+  _appBar() {
     return AppBar(
       backgroundColor: TaavColors.blue,
       title: const TaavText(
@@ -28,7 +28,7 @@ class EditCoursePage extends GetView<EditCourseController> {
     );
   }
 
-  _buildBody() {
+  _body() {
     return Form(
       key: controller.formKey,
       child: Column(
@@ -40,7 +40,7 @@ class EditCoursePage extends GetView<EditCourseController> {
             isRequired: true,
             requiredErrorMessage: 'لطفا مقداری را وارد کنید',
           ),
-          _buildTextFieldsBetweenSizedBox(),
+          CourseManagementUtils.dividerSizedBox(),
           TaavTextField(
             label: "واحد دوره",
             controller: controller.courseUnitController,
@@ -49,32 +49,44 @@ class EditCoursePage extends GetView<EditCourseController> {
             requiredErrorMessage: 'لطفا مقداری را وارد کنید',
           ),
           Obx(
-            () => _buildSubmitButton(),
+            () => _submitButton(),
+          ),
+          Obx(
+            () =>
+                controller.refreshMode == true ? _refreshButton() : Container(),
           ),
         ],
       ),
     );
   }
 
-  _buildTextFieldsBetweenSizedBox() {
-    return SizedBox(
-      height: CourseManagementUtils.largePadding(),
-    );
-  }
-
-  _buildSubmitButton() {
+  _submitButton() {
     return Container(
       margin: EdgeInsets.only(top: CourseManagementUtils.largePadding()),
       child: TaavButton(
         showLoading: controller.isWaiting.value,
-        onTap: _onSubmitButtonTapped,
+        onTap: _onSubmitButton,
         buttonType: TaavButtonType.filled,
         label: 'تغییر دوره',
       ),
     );
   }
 
-  _onSubmitButtonTapped() async {
+  _refreshButton() {
+    return Container(
+      margin: EdgeInsets.only(top: CourseManagementUtils.largePadding()),
+      child: TaavButton(
+        showLoading: controller.isWaiting.value,
+        onTap: _onRefreshButton,
+        buttonType: TaavButtonType.filled,
+        label: 'تلاش مجدد',
+      ),
+    );
+  }
+
+  _onSubmitButton() async {
     await controller.editCourse();
   }
+
+  void _onRefreshButton() {}
 }
