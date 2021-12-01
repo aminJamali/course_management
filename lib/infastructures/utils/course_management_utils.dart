@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class CourseManagementUtils {
   static double largePadding() => 10;
 
@@ -8,4 +10,9 @@ class CourseManagementUtils {
   static double tinyPadding() => 2;
 
   static double textFormFiledHeight() => 45;
+  static dividerSizedBox() {
+    return SizedBox(
+      height: CourseManagementUtils.largePadding(),
+    );
+  }
 }

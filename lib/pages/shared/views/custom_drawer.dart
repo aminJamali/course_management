@@ -14,7 +14,7 @@ class CustomDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             ListTile(
-              title: TaavText(
+              title: const TaavText(
                 'افزودن درس',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
@@ -24,7 +24,7 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: TaavText(
+              title: const TaavText(
                 'تغییر درس',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
@@ -34,7 +34,7 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: TaavText(
+              title: const TaavText(
                 'افزودن دانش آموز',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),

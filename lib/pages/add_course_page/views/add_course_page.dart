@@ -10,14 +10,14 @@ class AddCoursePage extends GetView<AddCourseController> {
   @override
   Widget build(BuildContext context) {
     return TaavScaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+      appBar: _appBar(),
+      body: _body(),
       showBorder: false,
       padding: EdgeInsets.zero,
     );
   }
 
-  _buildAppBar() {
+  _appBar() {
     return AppBar(
       backgroundColor: TaavColors.blue,
       title: const TaavText(
@@ -28,7 +28,7 @@ class AddCoursePage extends GetView<AddCourseController> {
     );
   }
 
-  _buildBody() {
+  _body() {
     return Form(
       key: controller.formKey,
       child: Column(
@@ -40,6 +40,7 @@ class AddCoursePage extends GetView<AddCourseController> {
             isRequired: true,
             requiredErrorMessage: 'لطفا مقداری را وارد کنید',
           ),
+          CourseManagementUtils.dividerSizedBox(),
           TaavTextField(
             label: "واحد دوره",
             controller: controller.courseUnitController,

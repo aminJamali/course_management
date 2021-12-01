@@ -1,7 +1,5 @@
-import 'dart:convert';
-
 import 'package:course_management/pages/edit_course_page/models/course_view_model.dart';
-import 'package:course_management/pages/shared/repositories/get_course_repository.dart';
+import 'package:course_management/pages/add_student_page.dart/views/widgets/courses_drop_down/repositories/get_course_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:taav_ui/taav_ui.dart';
@@ -27,7 +25,6 @@ class GetCourseController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     getAllCourses();
   }

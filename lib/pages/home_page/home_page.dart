@@ -8,14 +8,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TaavScaffold(
-      appBar: _buildAppbar(),
-      drawer: CustomDrawer(),
+      appBar: _appbar(),
+      drawer: const CustomDrawer(),
       showBorder: false,
       padding: EdgeInsets.zero,
     );
   }
 
-  _buildAppbar() {
+  _appbar() {
     return AppBar(
       title: const TaavText(
         'تغییر دانش آموز',
