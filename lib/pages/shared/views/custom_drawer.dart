@@ -33,6 +33,16 @@ class CustomDrawer extends StatelessWidget {
                 Get.toNamed(CourseManagementRouteNames.editCoursePage);
               },
             ),
+            ListTile(
+              title: TaavText(
+                'افزودن دانش آموز',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              onTap: () {
+                Get.back();
+                Get.toNamed(CourseManagementRouteNames.addStudentPage);
+              },
+            ),
           ],
         ),
       ),

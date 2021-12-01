@@ -1,29 +1,34 @@
+import 'package:course_management/pages/add_student_page.dart/models/add_student_dto.dart';
+import 'package:course_management/pages/add_student_page.dart/repositories/add_student_repositories.dart';
+import 'package:course_management/pages/edit_course_page/models/course_view_model.dart';
+import 'package:course_management/pages/shared/views/success_dialog.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:course_management/pages/add_course_page/models/add_course_dto.dart';
-import 'package:course_management/pages/add_course_page/repositories/add_course_repository.dart';
-import 'package:course_management/pages/shared/views/success_dialog.dart';
 import 'package:taav_ui/taav_ui.dart';
 
-class AddCourseController extends GetxController {
+class AddStudentController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RxBool isWaiting = false.obs;
-  TextEditingController courseTitleController = TextEditingController();
-  TextEditingController courseUnitController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+
+  TextEditingController familyController = TextEditingController();
+
+  TextEditingController mobileController = TextEditingController();
+  List<CourseViewModel> studentCourses = [];
   String successMessage = 'با موفقیت اضافه شد';
-  AddCourseRepository addCourseRepository =
-      AddCourseRepository(onExceptionReport: (final exceptionKey) {
+  AddStudentRepository addStudentRepository =
+      AddStudentRepository(onExceptionReport: (final exceptionKey) {
     TaavToastManager().showToast(exceptionKey);
   });
 
-  Future addCourse() async {
+  Future addStudent() async {
     if (!formKey.currentState!.validate()) {
       return false;
     }
     isWaiting(true);
     final Either<String, dynamic> result =
-        await addCourseRepository.addCourse(_addCourseDto);
+        await addStudentRepository.addStudent(_addStudentDto);
     isWaiting(false);
     result.fold((exception) {}, (result) {
       showSuccessDialog();
@@ -43,9 +48,11 @@ class AddCourseController extends GetxController {
             ));
   }
 
-  AddCourseDto get _addCourseDto => AddCourseDto(
+  AddStudentDto get _addStudentDto => AddStudentDto(
         id: DateTime.now().millisecondsSinceEpoch,
-        title: courseTitleController.text,
-        unit: int.parse(courseUnitController.text),
+        name: nameController.text,
+        family: familyController.text,
+        courses: studentCourses,
+        mobile: mobileController.text,
       );
 }
