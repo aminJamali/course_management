@@ -8,13 +8,4 @@ class CourseViewModel {
     title = json['title'];
     unit = json['unit'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-
-    data['title'] = title;
-    data['unit'] = unit;
-    return data;
-  }
 }
