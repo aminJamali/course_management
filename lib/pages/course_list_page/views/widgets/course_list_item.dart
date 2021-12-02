@@ -19,7 +19,7 @@ class CourseListItem extends GetView<GetCourseListController> {
   @override
   Widget build(BuildContext context) => Slidable(
         actionPane: const SlidableScrollActionPane(),
-        actionExtentRatio: 0.20,
+        actionExtentRatio: 0.30,
         closeOnScroll: true,
         actions: _slidableActions(context),
         child: Column(
@@ -52,6 +52,13 @@ class CourseListItem extends GetView<GetCourseListController> {
                 color: TaavColors.green,
               ),
             ),
+            IconButton(
+              onPressed: () => _onButtonDelete(context),
+              icon: const Icon(
+                Icons.delete,
+                color: TaavColors.red,
+              ),
+            ),
           ],
         ),
       ];
@@ -61,6 +68,32 @@ class CourseListItem extends GetView<GetCourseListController> {
         '${CourseManagementRouteNames.editCoursePage}/${item.id}');
     if (editedViewModel != null) {
       controller.rxPaginationList.key.currentState![index] = editedViewModel;
+    }
+  }
+
+  _onButtonDelete(BuildContext context) async {
+    final deletedViewModelId = await TaavDialog.showDialog(
+      context: context,
+      barrierDismissible: true,
+      transitionDuration: const Duration(milliseconds: 400),
+      pageBuilder: (
+        final context,
+        final anim1,
+        final anim2,
+      ) =>
+          TaavDialogSimple(
+        bodyTitle: 'حذف درس',
+        bodyMessage: 'آیا از حذف اطمینان دارید؟',
+        status: TaavWidgetStatus.danger,
+        showCloseButton: false,
+        onDoneTap: () => _deleteCourse(context),
+        onCancelTap: Navigator.of(context).pop,
+        doneText: 'بله',
+        cancelText: 'خیر',
+      ),
+    );
+    if (deletedViewModelId != null) {
+      controller.rxPaginationList.key.currentState![index] = deletedViewModelId;
     }
   }
 
@@ -79,4 +112,11 @@ class CourseListItem extends GetView<GetCourseListController> {
           textAlign: TextAlign.start,
         ),
       );
+
+  _deleteCourse(BuildContext context) {
+    final deletedItem = controller.deleteCourse(item.id);
+    if (deletedItem != null) {
+      controller.rxPaginationList.key.currentState!.removeItemAt(index);
+    }
+  }
 }

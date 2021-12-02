@@ -1,7 +1,10 @@
+import 'dart:ffi';
+
 import 'package:course_management/infastructures/utils/rx_pagination_list.dart';
 import 'package:course_management/pages/course_list_page/models/course_list_item_view_model.dart';
 import 'package:course_management/pages/course_list_page/repositories/get_course_list_repository.dart';
 import 'package:course_management/pages/shared/models/advanced_search_type.dart';
+import 'package:course_management/pages/shared/views/success_dialog.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
@@ -70,6 +73,29 @@ class GetCourseListController extends GetxController {
       rxPaginationList.key.currentState!.addAll(result);
       rxPaginationList.showError.value = false;
     });
+  }
+
+  Future<void> deleteCourse(int id) async {
+    final Either<String, dynamic> result = await repository.deleteCourse(id);
+    result.fold((exception) => null, (data) {
+      showSuccessDialog();
+      Future.delayed(const Duration(milliseconds: 2000), () {
+        Get.back(
+          result: id,
+        );
+      });
+    });
+  }
+
+  void showSuccessDialog() async {
+    await TaavDialog.showDialog(
+        context: Get.context,
+        barrierDismissible: true,
+        transitionDuration: const Duration(milliseconds: 400),
+        pageBuilder: (final context, final anim1, final anim2) =>
+            const SuccessDialog(
+              text: 'با موفقیت حذف شد',
+            ));
   }
 
   void _setSearchText() {

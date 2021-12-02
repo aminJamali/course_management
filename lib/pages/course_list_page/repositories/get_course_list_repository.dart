@@ -26,4 +26,15 @@ class GetCourseListRepository {
       return Right(items);
     });
   }
+
+  Future<Either<String, dynamic>> deleteCourse(int id) async {
+    final resultOrException =
+        await taavHttpClient.delete(RepositoryUrls.deleteCourseUrl(id));
+    return resultOrException.fold(
+      (exception) => Left(exception),
+      (result) => Right(
+        result,
+      ),
+    );
+  }
 }

@@ -5,6 +5,7 @@ class RepositoryUrls {
   static String studentUrl = '${CourseManagementParameters.fulBaseUrl}students';
   static String addCourseUrl = courseUrl;
   static String editCourseUrl(int id) => '$courseUrl/$id';
+  static String deleteCourseUrl(int id) => '$courseUrl/$id';
   static String editStudentUrl(int id) => '$studentUrl/$id';
 
   static String getCourseByIdUrl(final int id) =>

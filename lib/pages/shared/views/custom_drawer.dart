@@ -15,22 +15,12 @@ class CustomDrawer extends StatelessWidget {
           children: <Widget>[
             ListTile(
               title: const TaavText(
-                'افزودن درس',
+                'نمایش دروس',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               onTap: () {
                 Get.back();
-                Get.toNamed(CourseManagementRouteNames.addCoursePage);
-              },
-            ),
-            ListTile(
-              title: const TaavText(
-                'تغییر درس',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              onTap: () {
-                Get.back();
-                Get.toNamed(CourseManagementRouteNames.editCoursePage);
+                Get.toNamed(CourseManagementRouteNames.courseListPage);
               },
             ),
             ListTile(
@@ -51,16 +41,6 @@ class CustomDrawer extends StatelessWidget {
               onTap: () {
                 Get.back();
                 Get.toNamed(CourseManagementRouteNames.editStudentPage);
-              },
-            ),
-            ListTile(
-              title: const TaavText(
-                'نمایش دروس',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              onTap: () {
-                Get.back();
-                Get.toNamed(CourseManagementRouteNames.courseListPage);
               },
             ),
           ],
