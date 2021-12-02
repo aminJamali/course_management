@@ -17,6 +17,7 @@ dependencies:
       url: http://unpub.taavserver.ir:4000
   get: ^4.3.8
   dartz: ^0.10.0
+  flutter_slidable: ^0.6.0
   dependencies:
   taav_http_client:
     version: ^0.4.16

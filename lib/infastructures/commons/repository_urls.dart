@@ -12,6 +12,5 @@ class RepositoryUrls {
   static String getStudentByIdUrl(final int id) =>
       '${CourseManagementParameters.fulBaseUrl}students/$id';
   static String addStudentUrl = studentUrl;
-  static String getcourseListUrl(final String query) =>
-      '$courseUrl/courses$query';
+  static String getcourseListUrl(final String query) => '$courseUrl/$query';
 }

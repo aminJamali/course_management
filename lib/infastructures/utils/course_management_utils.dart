@@ -2,6 +2,8 @@ import 'package:course_management/pages/shared/models/advanced_search_type.dart'
 import 'package:course_management/pages/shared/models/advanced_search_view_model.dart';
 import 'package:course_management/pages/shared/models/database_mode.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:taav_ui/taav_ui.dart';
 
 class CourseManagementUtils {
   static double largePadding() => 10;
@@ -17,6 +19,26 @@ class CourseManagementUtils {
     return SizedBox(
       height: CourseManagementUtils.largePadding(),
     );
+  }
+
+  static Color getBaseColorOfText() =>
+      Get.context.styleData.get('textBase-contentColor');
+
+  static BorderRadius getTaavThemeBorderRadius(
+      final TaavWidgetShape shape, final BuildContext context) {
+    double radius = 1;
+    switch (shape) {
+      case TaavWidgetShape.rectangle:
+        radius = context.styleData.borderRadiusRectangle;
+        break;
+      case TaavWidgetShape.round:
+        radius = context.styleData.borderRadiusRound;
+        break;
+      case TaavWidgetShape.semiRound:
+        radius = context.styleData.borderRadiusSemiRound;
+        break;
+    }
+    return BorderRadius.all(Radius.circular(radius));
   }
 
   static String generateQuery(

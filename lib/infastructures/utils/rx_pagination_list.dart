@@ -15,7 +15,7 @@ class RxPaginationList<T> {
   RxBool showError = false.obs;
 
   List<T> list = <T>[];
-  GlobalKey<TaavGridViewState> key = GlobalKey<TaavGridViewState>();
+  GlobalKey<TaavListViewState> key = GlobalKey<TaavListViewState>();
   int limit;
   RxPaginationList({final this.limit = 15}) {
     filterChipsList.add(AdvancedSearchViewModel(
@@ -62,7 +62,7 @@ class RxPaginationList<T> {
     }
   }
 
-  bool get isFirstPage => paginationOffset == 0;
+  bool get isFirstPage => paginationOffset == 1;
 
   String get query {
     removeFilter('offset');
@@ -80,6 +80,6 @@ class RxPaginationList<T> {
         show: false,
       ));
     return CourseManagementUtils.generateQuery(
-        filterChipsList, DatabaseMode.taavV2);
+        filterChipsList, DatabaseMode.jsonServer);
   }
 }

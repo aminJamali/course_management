@@ -1,5 +1,7 @@
 import 'package:course_management/pages/add_student_page.dart/commons/add_student_bindings.dart';
 import 'package:course_management/pages/add_student_page.dart/views/add_student_page.dart';
+import 'package:course_management/pages/course_list_page/commons/course_list_page_bindings.dart';
+import 'package:course_management/pages/course_list_page/views/course_list_page.dart';
 import 'package:course_management/pages/edit_course_page/commons/edit_course_binding.dart';
 import 'package:course_management/pages/edit_course_page/views/edit_course_page.dart';
 import 'package:course_management/pages/edit_student_page/commons/edit_student_bindings.dart';
@@ -17,7 +19,7 @@ class CourseManagementRoutes {
       binding: AddCourseBinding(),
     ),
     GetPage(
-      name: CourseManagementRouteNames.editCoursePage,
+      name: '${CourseManagementRouteNames.editCoursePage}/:id',
       page: () => const EditCoursePage(),
       binding: EditCourseBinding(),
     ),
@@ -30,6 +32,11 @@ class CourseManagementRoutes {
       name: CourseManagementRouteNames.editStudentPage,
       page: () => const EditStudentPage(),
       binding: EditStudentBindings(),
+    ),
+    GetPage(
+      name: CourseManagementRouteNames.courseListPage,
+      page: () => const CourseListPage(),
+      binding: CourseListPageBindings(),
     ),
   ];
 }

@@ -31,7 +31,10 @@ class EditCourseController extends GetxController {
     result.fold((exception) {}, (result) {
       showSuccessDialog();
       Future.delayed(const Duration(milliseconds: 2000), () {
-        Get.back(result: true);
+        Get.back();
+        Get.back(
+          result: _editCourseDto.toListItemViewModel(courseId),
+        );
       });
     });
   }
@@ -74,7 +77,7 @@ class EditCourseController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    courseId = 2;
+    courseId = Get.parameters['id'].toIntOrNull();
     getCourseById();
   }
 }

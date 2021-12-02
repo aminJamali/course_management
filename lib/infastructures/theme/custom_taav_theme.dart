@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:taav_ui/src/theme/themes.dart';
 import 'package:taav_ui/taav_ui.dart';
 
 import 'styles/button_style.dart';
