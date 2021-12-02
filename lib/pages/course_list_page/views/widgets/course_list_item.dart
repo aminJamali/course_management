@@ -89,7 +89,7 @@ class CourseListItem extends GetView<GetCourseListController> {
         onDoneTap: () => _deleteCourse(context),
         onCancelTap: Navigator.of(context).pop,
         doneText: 'بله',
-        cancelText: 'خیر',
+        cancelText: 's',
       ),
     );
     if (deletedViewModelId != null) {

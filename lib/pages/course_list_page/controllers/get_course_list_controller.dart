@@ -62,7 +62,7 @@ class GetCourseListController extends GetxController {
     final Either<String, List<CourseListItemViewModel>> result =
         await repository.getAllCourses(rxPaginationList.query);
     result.fold((final l) {
-      if (rxPaginationList.paginationOffset > 0) {
+      if (rxPaginationList.paginationOffset > 1) {
         rxPaginationList.paginationOffset--;
       }
       rxPaginationList.showError.value = true;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:course_management/course_management.dart';
 import 'package:taav_ui/taav_ui.dart';
+import '../../../generated/locales.g.dart';
 
 class EditCoursePage extends GetView<EditCourseController> {
   const EditCoursePage({Key? key}) : super(key: key);
@@ -20,8 +21,8 @@ class EditCoursePage extends GetView<EditCourseController> {
   _appBar() {
     return AppBar(
       backgroundColor: TaavColors.blue,
-      title: const TaavText(
-        'تغییر درس',
+      title: TaavText(
+        LocaleKeys.course_management_shared_edit.tr,
         style: TextStyle(
             fontSize: 16, fontWeight: FontWeight.bold, color: TaavColors.white),
       ),
