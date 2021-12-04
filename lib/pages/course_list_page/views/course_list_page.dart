@@ -1,4 +1,5 @@
 import 'package:course_management/course_management.dart';
+import '../../../../../../generated/locales.g.dart';
 import 'package:course_management/infastructures/theme/custom_taav_theme.dart';
 import 'package:course_management/pages/course_list_page/controllers/get_course_list_controller.dart';
 import 'package:course_management/pages/course_list_page/views/widgets/course_list.dart';
@@ -58,7 +59,7 @@ class CourseListPage extends GetView<GetCourseListController> {
   Widget get _searchTextFormFiled => TaavTextField(
         themeName: CustomTaavTheme.searchTextFormFiledThemeName,
         controller: controller.searchTextController,
-        label: 'نام درس را جستجو کنید...',
+        label: LocaleKeys.course_management_course_search_course_name.tr,
         prefixIcon: Icon(
           Icons.search,
           color: CourseManagementUtils.getBaseColorOfText(),

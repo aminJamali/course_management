@@ -26,7 +26,7 @@ class GetCourseListController extends GetxController {
   TextEditingController searchTextController = TextEditingController();
 
   Future<void> getAllCourses() async {
-    if (rxPaginationList.key != null &&
+    if (rxPaginationList.key.isNot_null &&
         rxPaginationList.key.currentState != null) {
       rxPaginationList.key.currentState!.clearAllItems();
     } else {

@@ -2,9 +2,16 @@
   "course_management": {
     "business_exception": {},
     "shared": {
-      "edit": "edit"
+      "edit": "edit",
+      "try_again": "try again",
+      "fill_the_forms": "please fill the forms"
     },
-    "course": {},
+    "course": {
+      "courses": "courses",
+      "search_course_name": "search course name",
+      "course_title": "course title",
+      "course_unit": "course unit"
+    },
     "student": {}
   }
 }

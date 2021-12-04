@@ -23,7 +23,7 @@ class EditCoursePage extends GetView<EditCourseController> {
       backgroundColor: TaavColors.blue,
       title: TaavText(
         LocaleKeys.course_management_shared_edit.tr,
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 16, fontWeight: FontWeight.bold, color: TaavColors.white),
       ),
     );
@@ -36,18 +36,20 @@ class EditCoursePage extends GetView<EditCourseController> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TaavTextField(
-            label: "عنوان دوره",
+            label: LocaleKeys.course_management_course_course_title.tr,
             controller: controller.courseTitleController,
             isRequired: true,
-            requiredErrorMessage: 'لطفا مقداری را وارد کنید',
+            requiredErrorMessage:
+                LocaleKeys.course_management_shared_fill_the_forms.tr,
           ),
           CourseManagementUtils.dividerSizedBox(),
           TaavTextField(
-            label: "واحد دوره",
+            label: LocaleKeys.course_management_course_course_unit.tr,
             controller: controller.courseUnitController,
             taavInputFormatter: TaavInputFormatter.integer,
             isRequired: true,
-            requiredErrorMessage: 'لطفا مقداری را وارد کنید',
+            requiredErrorMessage:
+                LocaleKeys.course_management_shared_fill_the_forms.tr,
           ),
           Obx(
             () => _submitButton(),
@@ -68,7 +70,7 @@ class EditCoursePage extends GetView<EditCourseController> {
         showLoading: controller.isWaiting.value,
         onTap: _onSubmitButton,
         buttonType: TaavButtonType.filled,
-        label: 'تغییر دوره',
+        label: LocaleKeys.course_management_shared_edit.tr,
       ),
     );
   }
@@ -80,7 +82,7 @@ class EditCoursePage extends GetView<EditCourseController> {
         showLoading: controller.isWaiting.value,
         onTap: _onRefreshButton,
         buttonType: TaavButtonType.filled,
-        label: 'تلاش مجدد',
+        label: LocaleKeys.course_management_shared_try_again.tr,
       ),
     );
   }

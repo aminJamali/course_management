@@ -2,9 +2,16 @@
   "course_management": {
     "business_exception": {},
     "shared": {
-      "edit": "ویرایش"
+      "edit": "ویرایش",
+      "try_again": "تلاش مجدد",
+      "fill_the_forms": "لطفا مقداری را وارد کنید"
     },
-    "course": {},
+    "course": {
+      "courses": "دروس",
+      "search_course_name": "نام درس را جستجو کنید",
+      "course_title": "عنوان درس",
+      "course_unit": "واحد درس"
+    },
     "student": {}
   }
 }
